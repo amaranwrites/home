@@ -1,0 +1,83 @@
+.poem-card {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poem-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.poem-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.poem-author {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 16px;
+}
+
+.poem-content {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.toggle-content {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.poem-theme {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.poem-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.copy-btn,
+.share-btn,
+.like-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.copy-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.share-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.like-btn {
+  background-color: #ffc107;
+  color: white;
+}
+
+.like-btn.liked {
+  background-color: #e83e8c;
+  color: white;
+}
