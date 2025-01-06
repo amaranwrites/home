@@ -1,9 +1,11 @@
+/* General Card Styling */
 .poem-card {
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
+  position: relative; /* For positioning elements inside the card */
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 16px;
-  margin: 16px;
+  margin: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -13,71 +15,61 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Title Styling */
 .poem-title {
   font-size: 1.5rem;
-  color: #333;
+  color: #2c3e50;
   margin-bottom: 8px;
 }
 
+/* Author Styling */
 .poem-author {
   font-size: 1rem;
-  color: #777;
+  color: #6c757d;
   margin-bottom: 16px;
 }
 
+/* Content Styling */
 .poem-content {
   font-size: 1rem;
-  color: #555;
+  color: #495057;
   margin-bottom: 16px;
 }
 
-.toggle-content {
-  background: none;
-  border: none;
-  color: #007bff;
-  cursor: pointer;
-  font-size: 0.9rem;
-  margin-left: 8px;
-}
-
+/* Poem Theme */
 .poem-theme {
   font-size: 0.9rem;
-  color: #888;
+  color: #8a8d91;
   margin-bottom: 16px;
 }
 
+/* Minimalistic Button Styling */
+.icon-btn {
+  background: none; /* No background color */
+  border: none;
+  color: #6c757d; /* Neutral gray for icons */
+  font-size: 1.2rem; /* Adjust icon size */
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.3s ease;
+}
+
+.icon-btn:hover {
+  color: #2c3e50; /* Slightly darker gray on hover */
+}
+
+/* Copy Button - Positioned at the top-right corner */
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Share and Like Buttons - Positioned bottom-right */
 .poem-actions {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   display: flex;
   gap: 8px;
-}
-
-.copy-btn,
-.share-btn,
-.like-btn {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
-}
-
-.copy-btn {
-  background-color: #007bff;
-  color: white;
-}
-
-.share-btn {
-  background-color: #28a745;
-  color: white;
-}
-
-.like-btn {
-  background-color: #ffc107;
-  color: white;
-}
-
-.like-btn.liked {
-  background-color: #e83e8c;
-  color: white;
 }

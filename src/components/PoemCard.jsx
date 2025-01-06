@@ -1,18 +1,17 @@
 import React, { useState } from "react";
+import { FaCopy, FaShareAlt, FaHeart, FaRegHeart } from "react-icons/fa"; // Font Awesome Icons
 import "../styles/PoemCard.css";
 
 const PoemCard = ({ poem }) => {
   const [liked, setLiked] = useState(false);
   const [showFullContent, setShowFullContent] = useState(false);
 
-  // Copy poem content to clipboard
   const handleCopy = () => {
     navigator.clipboard.writeText(poem.content).then(() => {
       alert("Poem content copied to clipboard!");
     });
   };
 
-  // Share poem using Web Share API
   const handleShare = () => {
     if (navigator.share) {
       navigator
@@ -28,18 +27,20 @@ const PoemCard = ({ poem }) => {
     }
   };
 
-  // Toggle the visibility of the full content
   const toggleContent = () => {
     setShowFullContent(!showFullContent);
   };
 
-  // Like button functionality
   const toggleLike = () => {
     setLiked(!liked);
   };
 
   return (
     <div className="poem-card">
+      {/* Minimalistic Copy Button */}
+      <button className="icon-btn copy-btn" onClick={handleCopy} title="Copy">
+        <FaCopy />
+      </button>
       <h2 className="poem-title">{poem.title}</h2>
       <p className="poem-author">by {poem.author}</p>
       <div className="poem-content">
@@ -51,15 +52,21 @@ const PoemCard = ({ poem }) => {
         )}
       </div>
       <p className="poem-theme">Theme: {poem.theme}</p>
+      {/* Minimalistic Action Buttons */}
       <div className="poem-actions">
-        <button className="copy-btn" onClick={handleCopy}>
-          Copy
+        <button
+          className="icon-btn"
+          onClick={handleShare}
+          title="Share"
+        >
+          <FaShareAlt />
         </button>
-        <button className="share-btn" onClick={handleShare}>
-          Share
-        </button>
-        <button className={`like-btn ${liked ? "liked" : ""}`} onClick={toggleLike}>
-          {liked ? "Unlike" : "Like"}
+        <button
+          className="icon-btn"
+          onClick={toggleLike}
+          title={liked ? "Unlike" : "Like"}
+        >
+          {liked ? <FaHeart /> : <FaRegHeart />}
         </button>
       </div>
     </div>
