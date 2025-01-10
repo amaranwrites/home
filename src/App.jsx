@@ -1,24 +1,41 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-// import Hero from './components/Hero';
-import PoemList from './components/PoemList';
-import Footer from './components/Footer';
-import './App.css';
+import React from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { QuoteProvider } from "./context/QuoteContext"; 
+import Header from "./components/Header";
+import SEO from "./components/SEO";
+import PoemList from "./components/PoemList";
+import PoemDetail from "./components/PoemDetail";
+import Footer from "./components/Footer";
+// import Categories from "./components/Categories";
+import Home from "./components/Home";
+import Welcome from "./components/Welcome";
 
-function App() {
-    return (
+const categoriesData = []; // Static categories data
+
+const App = () => {
+  return (
+    <QuoteProvider>
+      <Router>
         <div className="App">
-            <Navbar />
-            {/* <Hero /> */}
-            <section className="poem-list">
-                <h2>Featured Poems</h2>
-                <div className="poem-cards-container">
-                    <PoemList />
-                </div>
-            </section>
-            <Footer />
+          <SEO 
+            title="Poem Blog" 
+            description="Explore a collection of beautiful poems and quotes." 
+            keywords="poems, quotes, poetry, literature" 
+            author="Your Name" 
+          />
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/poems" element={<PoemList />} />
+            <Route path="/poems/:id" element={<PoemDetail />} />
+            <Route path="/welcome" element={<Welcome />} />
+            {/* <Route path="/categories" element={<Categories categories={categoriesData} />} /> */}
+          </Routes>
+          <Footer />
         </div>
-    );
-}
+      </Router>
+    </QuoteProvider>
+  );
+};
 
-export default App;
+export default App; // Ensure this line exists

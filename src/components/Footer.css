@@ -1,0 +1,50 @@
+/* General footer styling */
+footer {
+  background-color: #34495e; /* Darker background for footer */
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow at top */
+  margin-top: 40px;
+}
+
+/* Footer text */
+footer p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Social media links styling */
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap; /* Allows for better wrap on smaller screens */
+}
+
+.social-media a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for social media links */
+.social-media a:hover {
+  color: #3498db; /* Blue color on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  footer {
+    padding: 25px 15px; /* Adjust padding on small screens */
+  }
+
+  .social-media {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

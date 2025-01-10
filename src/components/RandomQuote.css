@@ -1,0 +1,59 @@
+.random-quote {
+  position: relative;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.random-quote h2 {
+  text-align: center;
+  color: #333;
+}
+
+.random-quote button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.random-quote button:hover {
+  background-color: #0056b3;
+}
+
+.random-quote button:focus {
+  outline: none;
+  box-shadow: 0 0 4px #0056b3;
+}
+
+.action-icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.8); /* Subtle background for visibility */
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.action-icons i {
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.action-icons i:hover {
+  color: #007bff;
+}
