@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import "./RandomQuote.css";
 
 const RandomQuote = ({ quotes, category }) => {
@@ -19,20 +20,46 @@ const RandomQuote = ({ quotes, category }) => {
   };
 
   const handleCopy = (content) => {
-    navigator.clipboard.writeText(content).then(() => {
-      alert("Quote copied to clipboard!");
-    });
+    const formattedContent = content.replace(/\\n/g, "\n");
+
+    navigator.clipboard
+      .writeText(formattedContent)
+      .then(() => {
+        toast.success("Quote copied to clipboard!");
+      })
+      .catch(() => {
+        toast.error("Failed to copy the quote.");
+      });
   };
 
   const handleShare = (quote) => {
+    const formattedContent = quote.content.replace(/\\n/g, "\n");
+
     if (navigator.share) {
-      navigator.share({
-        title: "Random Quote",
-        text: `${quote.content} - ${quote.author}`,
-      });
+      navigator
+        .share({
+          title: "Quote of the Day",
+          text: `${formattedContent} - ${quote.author}`,
+        })
+        .then(() => {
+          toast.success("Quote shared successfully!");
+        })
+        .catch(() => {
+          toast.error("Failed to share the quote.");
+        });
     } else {
-      alert("Web Share API is not supported in this browser.");
+      toast.error("Web Share API is not supported in this browser.");
     }
+  };
+
+  // Formatting content for display: replaces \n with <br />
+  const formatContentForDisplay = (content) => {
+    return content.split("\\n").map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
   };
 
   return (
@@ -47,7 +74,8 @@ const RandomQuote = ({ quotes, category }) => {
             <strong>Author:</strong> {randomQuote.author}
           </p>
           <p>
-            <strong>Content:</strong> {randomQuote.content}
+            <strong>Content:</strong>{" "}
+            {formatContentForDisplay(randomQuote.content)}
           </p>
           <div className="action-icons">
             <i
@@ -70,6 +98,7 @@ const RandomQuote = ({ quotes, category }) => {
         <p>No quotes available. Try another category.</p>
       )}
       <button onClick={getRandomQuote}>Get Random Quote</button>
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };

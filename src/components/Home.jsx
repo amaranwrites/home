@@ -25,7 +25,7 @@ const Home = () => {
         keywords="poems,quotes,creativity,love,life"
         author="Amaran" 
       />
-      <h1>Welcome to Amaran Writes</h1>
+      <h1>Amaran Writes</h1>
 
       {quotes.length > 0 ? (
         <>

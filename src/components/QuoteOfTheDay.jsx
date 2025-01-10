@@ -1,4 +1,5 @@
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
 import "./QuoteOfTheDay.css";
 
 const QuoteOfTheDay = ({ quotes }) => {
@@ -11,27 +12,52 @@ const QuoteOfTheDay = ({ quotes }) => {
   );
 
   const handleCopy = (content) => {
-    navigator.clipboard.writeText(content).then(() => {
-      alert("Quote copied to clipboard!");
-    });
+    const formattedContent = content.replace(/\\n/g, "\n");
+
+    navigator.clipboard
+      .writeText(formattedContent)
+      .then(() => {
+        toast.success("Quote copied to clipboard!");
+      })
+      .catch(() => {
+        toast.error("Failed to copy the quote.");
+      });
   };
 
   const handleShare = (quote) => {
+    const formattedContent = quote.content.replace(/\\n/g, "\n");
+
     if (navigator.share) {
-      navigator.share({
-        title: "Quote of the Day",
-        text: `${quote.content} - ${quote.author}`,
-      });
+      navigator
+        .share({
+          title: "Quote of the Day",
+          text: `${formattedContent} - ${quote.author}`,
+        })
+        .then(() => {
+          toast.success("Quote shared successfully!");
+        })
+        .catch(() => {
+          toast.error("Failed to share the quote.");
+        });
     } else {
-      alert("Web Share API is not supported in this browser.");
+      toast.error("Web Share API is not supported in this browser.");
     }
+  };
+
+  const formatContentForDisplay = (content) => {
+    return content.split("\\n").map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
   };
 
   return (
     <div className="quote-of-the-day">
       <h2>Quote of the Day</h2>
       <blockquote>
-        <p>{quote.content}</p>
+        <p>{formatContentForDisplay(quote.content)}</p>
         <footer>- {quote.author}</footer>
       </blockquote>
       <div className="action-icons">
@@ -46,6 +72,7 @@ const QuoteOfTheDay = ({ quotes }) => {
           onClick={() => handleShare(quote)}
         ></i>
       </div>
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };
